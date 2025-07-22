@@ -1,4 +1,4 @@
-name: lsua_qm9
+name: qm9-ml-env
 channels:
   - conda-forge
   - rdkit
