@@ -30,7 +30,7 @@ jobs:
         run: python src/train_models.py
 
       - name: Upload results artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: training-results
           path: |
