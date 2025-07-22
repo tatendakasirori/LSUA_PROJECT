@@ -17,101 +17,20 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           environment-file: environment.yml
-          activate-environment: lsua_qm9
-          use-mamba: true                   # Faster dependency resolution
+          activate-environment: qm9-ml-env
+          use-mamba: true
           auto-activate-base: false
 
       - name: Generate 2D and 3D descriptors
-        shell: bash -l {0}
         run: |
+          conda activate qm9-ml-env
           python scripts/compute_rdkit_descriptors.py
           python scripts/compute_full_mordred_descriptors.py
 
       - name: Train ML models
-        shell:name: QM9 ML Training Pipeline
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  train:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up conda with environment
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          environment-file: environment.yml
-          activate-environment: qm9-ml-env  # Ensure this matches the name in your environment.yml
-          use-mamba: true                   # Faster dependency resolution
-          auto-activate-base: false
-
-      - name: Generate 2D and 3D descriptors
-        shell: bash -l {0}
         run: |
-          python scripts/compute_rdkit_descriptors.py
-          python scripts/compute_full_mordred_descriptors.py
-
-      - name: Train ML models
-        shell: bash -l {0}
-        run: python src/train_models.py
-
-      - name: Upload results artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: training-results
-          path: |
-            results/metrics/
-            results/plots/
-            results/logs/
-name: QM9 ML Training Pipeline
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  train:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up conda with environment
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          environment-file: environment.yml
-          activate-environment: qm9-ml-env  # Ensure this matches the name in your environment.yml
-          use-mamba: true                   # Faster dependency resolution
-          auto-activate-base: false
-
-      - name: Generate 2D and 3D descriptors
-        shell: bash -l {0}
-        run: |
-          python scripts/compute_rdkit_descriptors.py
-          python scripts/compute_full_mordred_descriptors.py
-
-      - name: Train ML models
-        shell: bash -l {0}
-        run: python src/train_models.py
-
-      - name: Upload results artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: training-results
-          path: |
-            results/metrics/
-            results/plots/
-            results/logs/
-
-        run: python src/train_models.py
+          conda activate qm9-ml-env
+          python src/train_models.py
 
       - name: Upload results artifacts
         uses: actions/upload-artifact@v4
