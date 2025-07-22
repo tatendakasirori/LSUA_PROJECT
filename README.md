@@ -1,3 +1,8 @@
+[![Python Version](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/downloads/release/python-3100/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://github.com/tatendakasirori/LSUA_PROJECT/actions/workflows/main.yml/badge.svg)](https://github.com/tatendakasirori/LSUA_PROJECT/actions)
+[![GitHub last commit](https://img.shields.io/github/last-commit/tatendakasirori/LSUA_PROJECT)](https://github.com/tatendakasirori/LSUA_PROJECT/commits/main)
+
 # Circumventing Density Functional Theory: Efficient Prediction of Molecular Properties Using Classical Machine Learning Models
 
 This repository contains all code, data processing scripts, and models developed under the **LSUA SURE 2025** program to explore the use of classical machine learning models as computationally efficient surrogates for **Density Functional Theory (DFT)** in predicting molecular properties from the **QM9 dataset**.
