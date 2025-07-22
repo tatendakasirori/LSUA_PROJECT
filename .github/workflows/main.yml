@@ -12,6 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Cache conda packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.conda/pkgs
+          key: ${{ runner.os }}-conda-pkgs-${{ hashFiles('environment.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-conda-pkgs-
+
       - name: Set up conda
         uses: goanpeca/setup-miniconda@v1
         with:
