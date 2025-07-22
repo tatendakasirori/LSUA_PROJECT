@@ -1,7 +1,8 @@
 name: qm9-ml-env
 channels:
-  - rdkit
   - conda-forge
+  - rdkit
+  - defaults
 dependencies:
   - python=3.10
   - pandas
