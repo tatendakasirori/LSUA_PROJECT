@@ -17,19 +17,19 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           environment-file: environment.yml
-          activate-environment: qm9-ml-env
-          use-mamba: true
+          activate-environment: qm9-ml-env       # Matches your environment.yml name
+          use-mamba: true                         # Faster solver
           auto-activate-base: false
 
       - name: Generate 2D and 3D descriptors
+        shell: bash -l {0}
         run: |
-          conda activate qm9-ml-env
           python scripts/compute_rdkit_descriptors.py
           python scripts/compute_full_mordred_descriptors.py
 
       - name: Train ML models
+        shell: bash -l {0}
         run: |
-          conda activate qm9-ml-env
           python src/train_models.py
 
       - name: Upload results artifacts
