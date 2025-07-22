@@ -1,0 +1,5 @@
+[2025-07-20 21:56:57,759] INFO: Reading input file: data/descriptors/rdkit_descriptors.csv
+[2025-07-20 21:57:25,102] INFO: Merging original dataset with Mordred descriptors...
+[2025-07-20 21:57:27,559] INFO: Saved Mordred descriptors to data/descriptors/mordred_full_descriptors.csv
+[2025-07-20 21:57:27,580] INFO: Saved merged dataset to data/descriptors/merged_qm9_mordred.csv
+[2025-07-20 21:57:27,581] INFO: Merged dataset shape: (128771, 17)

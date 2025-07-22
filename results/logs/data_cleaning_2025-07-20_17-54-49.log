@@ -1,0 +1,4 @@
+[2025-07-20 17:54:50,243] INFO: No missing values found in dataset.
+[2025-07-20 17:54:50,253] INFO: Dropped 0 rows containing missing values.
+[2025-07-20 17:54:50,282] INFO: Dropping 2 low-variance columns: ['HOMO', 'InertialShapeFactor']
+[2025-07-20 17:54:50,322] INFO: Dropping 2 highly correlated columns: ['PMI3', 'NPR1']

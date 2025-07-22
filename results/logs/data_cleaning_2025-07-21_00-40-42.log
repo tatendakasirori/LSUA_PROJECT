@@ -1,0 +1,8 @@
+[2025-07-21 00:40:43,012] WARNING: Both 'SMILES' and 'smiles' contain data. Manual inspection may be needed.
+[2025-07-21 00:40:43,013] INFO: Coercing non-protected columns to numeric types.
+[2025-07-21 00:40:43,125] WARNING: Total missing values found: 128785
+[2025-07-21 00:40:43,125] WARNING: Column 'smiles' has 128771 missing values.
+[2025-07-21 00:40:43,126] WARNING: Column 'HybRatio' has 14 missing values.
+[2025-07-21 00:40:43,140] INFO: Dropped 128771 rows containing missing values.
+[2025-07-21 00:40:43,150] INFO: No low-variance columns found.
+[2025-07-21 00:40:43,155] INFO: No highly correlated features found above threshold.

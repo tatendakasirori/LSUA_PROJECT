@@ -1,0 +1,120 @@
+{
+  "ridge_regression": {
+    "model_type": "Ridge",
+    "targets": ["mu", "HOMO", "LUMO", "gap"],
+    "hyperparameters": {
+      "alpha": 1.0,
+      "solver": "auto"
+    },
+    "train_test_split": {
+      "test_size": 0.2,
+      "random_state": 42
+    },
+    "feature_scaling": false
+  },
+  "random_forest": {
+    "model_type": "RandomForest",
+    "targets": ["mu", "HOMO", "LUMO", "gap"],
+    "hyperparameters": {
+      "n_estimators": "default",
+      "max_depth": "auto",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "train_test_split": {
+      "test_size": 0.2,
+      "random_state": 42
+    },
+    "feature_scaling": false
+  },
+  "xgboost": {
+    "model_type": "XGBoost",
+    "targets": ["mu", "HOMO", "LUMO", "gap"],
+    "hyperparameters": {
+      "n_estimators": "default",
+      "learning_rate": "default",
+      "max_depth": "default",
+      "verbosity": 0,
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "train_test_split": {
+      "test_size": 0.2,
+      "random_state": 42
+    },
+    "feature_scaling": false
+  },
+  "neural_network": {
+    "model_type": "TensorFlow_NN",
+    "targets": ["mu", "gap", "HOMO", "LUMO"],
+    "hyperparameters": {
+      "epochs": 100,
+      "batch_size": 256,
+      "patience": 7,
+      "l2_regularization": 1e-6,
+      "optimizer": "adam",
+      "loss": "mse",
+      "architecture": [512, 256, 128, 64],
+      "activation": "relu",
+      "dropout": [0.3, 0.3, 0.2]
+    },
+    "train_test_split": {
+      "test_size": 0.18,
+      "random_state": 42
+    },
+    "feature_scaling": true,
+    "scalers": {
+      "input": "StandardScaler",
+      "output": "StandardScaler"
+    },
+    "early_stopping": {
+      "monitor": "val_loss",
+      "restore_best_weights": true
+    }
+  },
+  "svm": {
+    "model_type": "SVM",
+    "model_id": "svm_rbf_1.0_0.1",
+    "description": "SVM regression using RBF kernel with C=1.0 and epsilon=0.1 on standardized QM9 features. Each target ('mu', 'HOMO', 'LUMO', 'gap') is trained separately.",
+    "algorithm": "SVR (Support Vector Regressor)",
+    "framework": "scikit-learn",
+    "scaling": "StandardScaler (applied to both features and targets)",
+    "targets": ["mu", "HOMO", "LUMO", "gap"],
+    "input_features": "All columns excluding ['smiles', 'mu', 'HOMO', 'LUMO', 'gap']",
+    "hyperparameters": {
+      "kernel": "rbf",
+      "C": 1.0,
+      "epsilon": 0.1
+    },
+    "train_test_split": {
+      "test_size": 0.2,
+      "random_state": 42
+    }
+  },
+  "stacked_ensemble": {
+    "model_type": "StackingRegressor",
+    "description": "Stacked ensemble using Ridge, RandomForest, XGBoost, SVR, GradientBoosting, CatBoost, and LGBM as base learners, with Linear Regression as meta-learner. StandardScaler is used in the pipeline.",
+    "targets": ["mu", "HOMO", "LUMO", "gap"],
+    "base_learners": [
+      "Ridge(alpha=1.0)",
+      "RandomForest(n_estimators=100, random_state=42)",
+      "XGBoost(n_estimators=100, random_state=42)",
+      "SVR(kernel='rbf', C=1.0, epsilon=0.1)",
+      "GradientBoosting(n_estimators=100, random_state=42)",
+      "CatBoost(verbose=0, random_seed=42)",
+      "LGBM(n_estimators=100, random_state=42)"
+    ],
+    "meta_learner": "LinearRegression",
+    "framework": "scikit-learn",
+    "pipeline_steps": ["StandardScaler", "StackingRegressor"],
+    "train_test_split": {
+      "test_size": 0.2,
+      "random_state": 42
+    },
+    "feature_scaling": true,
+    "passthrough": true,
+    "n_jobs": -1,
+    "metrics_file": "results/metrics/stacked_model_metrics.csv",
+    "date_trained": "2025-07-21"
+  }
+}

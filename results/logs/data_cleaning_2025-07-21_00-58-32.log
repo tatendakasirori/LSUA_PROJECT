@@ -1,0 +1,6 @@
+[2025-07-21 00:58:33,920] WARNING: Both 'SMILES' and 'smiles' contain data. Manual inspection may be needed.
+[2025-07-21 00:58:33,979] WARNING: Total missing values found: 14
+[2025-07-21 00:58:33,984] WARNING: Column 'HybRatio' has 14 missing values.
+[2025-07-21 00:58:34,040] INFO: Dropped 14 rows containing missing values.
+[2025-07-21 00:58:34,102] INFO: Dropping 2 low-variance columns: ['InertialShapeFactor', 'VE2_A']
+[2025-07-21 00:58:34,679] INFO: Dropping 5 highly correlated columns: ['PMI3', 'NPR1', 'SpAD_A', 'VR2_A', 'nBondsKS']

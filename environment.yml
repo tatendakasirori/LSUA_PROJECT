@@ -1,0 +1,23 @@
+name: qm9-ml-env
+channels:
+  - rdkit
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - scikit-learn
+  - xgboost
+  - lightgbm
+  - catboost
+  - tensorflow
+  - tensorflow-datasets
+  - matplotlib
+  - seaborn
+  - joblib
+  - tqdm
+  - mordred
+  - rdkit
+  - pip
+  - pip:
+      - loguru
